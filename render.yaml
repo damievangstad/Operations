@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: sop-assistant
+    runtime: node
+    rootDir: sop-assistant
+    plan: starter
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: PUBLIC_URL
+        sync: false
+      - key: ADMIN_KEY
+        sync: false
+      - key: ESCALATION_CONTACT
+        value: your manager
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+      - key: OPENAI_EMBED_MODEL
+        value: text-embedding-3-small
